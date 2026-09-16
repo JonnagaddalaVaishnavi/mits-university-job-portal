@@ -8,12 +8,12 @@ public class StudentRegisterRequest {
     private String department;
     private BigDecimal cgpa;
     private int backlogs;
-    private int graduationYear;
+    private Integer graduationYear;
 
     public StudentRegisterRequest() {
     }
 
-    public StudentRegisterRequest(Long userId, String usn, String department, BigDecimal cgpa, int backlogs, int graduationYear) {
+    public StudentRegisterRequest(Long userId, String usn, String department, BigDecimal cgpa, int backlogs, Integer graduationYear) {
         this.userId = userId;
         this.usn = usn;
         this.department = department;
@@ -62,11 +62,11 @@ public class StudentRegisterRequest {
         this.backlogs = backlogs;
     }
 
-    public int getGraduationYear() {
+    public Integer getGraduationYear() {
         return graduationYear;
     }
 
-    public void setGraduationYear(int graduationYear) {
+    public void setGraduationYear(Integer graduationYear) {
         this.graduationYear = graduationYear;
     }
 }

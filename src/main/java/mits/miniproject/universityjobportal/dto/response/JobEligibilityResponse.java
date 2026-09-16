@@ -1,30 +1,26 @@
 package mits.miniproject.universityjobportal.dto.response;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 public class JobEligibilityResponse {
 
     private BigDecimal minCgpa;
     private Integer maxBacklogs;
     private String eligibleDepartments;
-    private LocalDate graduationYear;
+    private Integer graduationYear;
     private String additionalCriteria;
 
     public JobEligibilityResponse() {
     }
 
-    public JobEligibilityResponse(BigDecimal minCgpa, Integer maxBacklogs, String eligibleDepartments,
-                                  LocalDate graduationYear, String additionalCriteria) {
+    public JobEligibilityResponse(BigDecimal minCgpa, Integer maxBacklogs,
+                                  String eligibleDepartments, Integer graduationYear,
+                                  String additionalCriteria) {
         this.minCgpa = minCgpa;
         this.maxBacklogs = maxBacklogs;
         this.eligibleDepartments = eligibleDepartments;
         this.graduationYear = graduationYear;
         this.additionalCriteria = additionalCriteria;
-    }
-
-
-    public JobEligibilityResponse(BigDecimal minCgpa, Integer maxBacklogs, String eligibleDepartments, int graduationYear, String additionalCriteria) {
     }
 
     public BigDecimal getMinCgpa() {
@@ -51,11 +47,11 @@ public class JobEligibilityResponse {
         this.eligibleDepartments = eligibleDepartments;
     }
 
-    public LocalDate getGraduationYear() {
+    public Integer getGraduationYear() {
         return graduationYear;
     }
 
-    public void setGraduationYear(LocalDate graduationYear) {
+    public void setGraduationYear(Integer graduationYear) {
         this.graduationYear = graduationYear;
     }
 

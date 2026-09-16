@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ApplicationRepository extends JpaRepository<ApplicationEntity,Long> {
+public interface ApplicationRepository extends JpaRepository<ApplicationEntity, Long> {
     List<ApplicationEntity> findByStudent(StudentEntity student);
-    List<ApplicationEntity> findByJob(StudentEntity student, JobEntity job);
-    boolean existsByStudentAndJob(StudentEntity student,JobEntity job);
+    List<ApplicationEntity> findByJob(JobEntity job);
+    boolean existsByStudentAndJob(StudentEntity student, JobEntity job);
 }

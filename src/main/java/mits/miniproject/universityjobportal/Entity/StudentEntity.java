@@ -18,7 +18,7 @@ public class StudentEntity {
     private String department;
     private BigDecimal cgpa;
     private int backlogs;
-    private int graduationYear;
+    private Integer graduationYear;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -36,7 +36,7 @@ public class StudentEntity {
     public StudentEntity() {
     }
 
-    public StudentEntity(Long id, UserEntity user, String usn, String department, BigDecimal cgpa, int backlogs, int graduationYear, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public StudentEntity(Long id, UserEntity user, String usn, String department, BigDecimal cgpa, int backlogs, Integer graduationYear, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.user = user;
         this.usn = usn;
@@ -96,11 +96,11 @@ public class StudentEntity {
         this.backlogs = backlogs;
     }
 
-    public int getGraduationYear() {
+    public Integer getGraduationYear() {
         return graduationYear;
     }
 
-    public void setGraduationYear(int graduationYear) {
+    public void setGraduationYear(Integer graduationYear) {
         this.graduationYear = graduationYear;
     }
 

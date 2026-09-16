@@ -70,7 +70,7 @@ public class JobEntity {
     }
 
     public void setCoordinatorId(CoordinatorEntity coordinatorId) {
-        coordinatorId = coordinatorId;
+        this.coordinator = coordinatorId;
     }
 
     public String getTitle() {
