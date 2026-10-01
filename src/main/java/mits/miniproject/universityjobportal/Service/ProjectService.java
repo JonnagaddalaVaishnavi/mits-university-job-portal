@@ -5,6 +5,7 @@ import mits.miniproject.universityjobportal.Entity.StudentEntity;
 import mits.miniproject.universityjobportal.Repository.ProjectRepository;
 import mits.miniproject.universityjobportal.Repository.StudentRepository;
 import mits.miniproject.universityjobportal.dto.request.ProjectRequest;
+import mits.miniproject.universityjobportal.dto.request.ProjectUpdateRequest;
 import mits.miniproject.universityjobportal.dto.response.ProjectResponse;
 import mits.miniproject.universityjobportal.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,28 @@ public class ProjectService {
 
         return projectRepository.findByStudent(student).stream().map(this::mapToResponse).collect(Collectors
                 .toList());
+    }
+
+    // NEW - full update of an existing project's editable fields
+    public ProjectResponse update(Long projectId, ProjectUpdateRequest request) {
+        ProjectEntity project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("No project found with id: " + projectId));
+
+        project.setTitle(request.getTitle());
+        project.setDescription(request.getDescription());
+        project.setTechnologies(request.getTechnologies());
+        project.setStartDate(request.getStartDate());
+        project.setEndDate(request.getEndDate());
+
+        return mapToResponse(projectRepository.save(project));
+    }
+
+    // NEW - delete. No dependent rows reference a project, so this is a plain delete.
+    public void delete(Long projectId) {
+        if (!projectRepository.existsById(projectId)) {
+            throw new ResourceNotFoundException("No project found with id: " + projectId);
+        }
+        projectRepository.deleteById(projectId);
     }
     private ProjectResponse mapToResponse(ProjectEntity project) {
         return new ProjectResponse(

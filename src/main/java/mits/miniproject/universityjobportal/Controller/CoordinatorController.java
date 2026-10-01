@@ -28,4 +28,15 @@ public class CoordinatorController {
     public ResponseEntity<CoordinatorResponse> getById(@PathVariable Long id){
         return new ResponseEntity<>(coordinatorService.getById(id),HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CoordinatorResponse> update(
+            @PathVariable Long id,
+            @RequestBody CoordinatorRegisterRequest request) {
+
+        CoordinatorResponse response =
+                coordinatorService.update(id, request);
+
+        return ResponseEntity.ok(response);
+    }
 }

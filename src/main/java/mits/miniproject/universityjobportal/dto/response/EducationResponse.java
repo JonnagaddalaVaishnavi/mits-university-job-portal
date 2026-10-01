@@ -8,12 +8,12 @@ public class EducationResponse {
     private Long id;
     private String degree;
     private String institution;
-    private LocalDate yearOfPassing;
+    private Integer yearOfPassing;
 
     public EducationResponse() {
     }
 
-    public EducationResponse(Long id, String degree, String institution, LocalDate yearOfPassing) {
+    public EducationResponse(Long id, String degree, String institution, Integer yearOfPassing) {
         this.id = id;
         this.degree = degree;
         this.institution = institution;
@@ -44,11 +44,11 @@ public class EducationResponse {
         this.institution = institution;
     }
 
-    public LocalDate getYearOfPassing() {
+    public Integer getYearOfPassing() {
         return yearOfPassing;
     }
 
-    public void setYearOfPassing(LocalDate yearOfPassing) {
+    public void setYearOfPassing(Integer yearOfPassing) {
         this.yearOfPassing = yearOfPassing;
     }
 }

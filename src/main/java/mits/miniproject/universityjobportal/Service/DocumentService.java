@@ -5,6 +5,7 @@ import mits.miniproject.universityjobportal.Entity.StudentEntity;
 import mits.miniproject.universityjobportal.Repository.DocumentRepository;
 import mits.miniproject.universityjobportal.Repository.StudentRepository;
 import mits.miniproject.universityjobportal.dto.request.DocumentRequest;
+import mits.miniproject.universityjobportal.dto.request.DocumentUpdateRequest;
 import mits.miniproject.universityjobportal.dto.response.DocumentResponse;
 import mits.miniproject.universityjobportal.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,27 @@ public class DocumentService {
 
         return documentRepository.findByStudent(student)
                 .stream().map(this::mapToResponse).collect(Collectors.toList());
+    }
+
+
+    // NEW
+    public DocumentResponse update(Long documentId, DocumentUpdateRequest request) {
+        DocumentEntity document = documentRepository.findById(documentId)
+                .orElseThrow(() -> new ResourceNotFoundException("No document found with id: " + documentId));
+
+        document.setDocumentType(request.getDocumentType());
+        document.setFileName(request.getFileName());
+        document.setFilePath(request.getFilePath());
+
+        return mapToResponse(documentRepository.save(document));
+    }
+
+    // NEW
+    public void delete(Long documentId) {
+        if (!documentRepository.existsById(documentId)) {
+            throw new ResourceNotFoundException("No document found with id: " + documentId);
+        }
+        documentRepository.deleteById(documentId);
     }
 
     private DocumentResponse mapToResponse(DocumentEntity document) {

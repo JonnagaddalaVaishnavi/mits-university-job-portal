@@ -7,13 +7,13 @@ public class JobEligibilityRequest {
     private BigDecimal minCgpa;
     private int maxBacklogs;
     private String eligibleDepartments;
-    private int graduationYear;
+    private Integer graduationYear;
     private String additionalCriteria;
 
     public JobEligibilityRequest() {
     }
 
-    public JobEligibilityRequest(BigDecimal minCgpa, int maxBacklogs, String eligibleDepartments, int graduationYear, String additionalCriteria) {
+    public JobEligibilityRequest(BigDecimal minCgpa, int maxBacklogs, String eligibleDepartments, Integer graduationYear, String additionalCriteria) {
         this.minCgpa = minCgpa;
         this.maxBacklogs = maxBacklogs;
         this.eligibleDepartments = eligibleDepartments;
@@ -45,11 +45,11 @@ public class JobEligibilityRequest {
         this.eligibleDepartments = eligibleDepartments;
     }
 
-    public int getGraduationYear() {
+    public Integer getGraduationYear() {
         return graduationYear;
     }
 
-    public void setGraduationYear(int graduationYear) {
+    public void setGraduationYear(Integer graduationYear) {
         this.graduationYear = graduationYear;
     }
 

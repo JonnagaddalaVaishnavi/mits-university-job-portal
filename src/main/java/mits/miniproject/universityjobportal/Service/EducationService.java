@@ -5,6 +5,7 @@ import mits.miniproject.universityjobportal.Entity.StudentEntity;
 import mits.miniproject.universityjobportal.Repository.EducationRepository;
 import mits.miniproject.universityjobportal.Repository.StudentRepository;
 import mits.miniproject.universityjobportal.dto.request.EducationRequest;
+import mits.miniproject.universityjobportal.dto.request.EducationUpdateRequest;
 import mits.miniproject.universityjobportal.dto.response.EducationResponse;
 import mits.miniproject.universityjobportal.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,27 @@ public class EducationService {
                 .stream()
                 .map(this::mapToResponse)
                 .collect(Collectors.toList());
+    }
+
+
+    // NEW
+    public EducationResponse update(Long educationId, EducationUpdateRequest request) {
+        EducationEntity education = educationRepository.findById(educationId)
+                .orElseThrow(() -> new ResourceNotFoundException("No education record found with id: " + educationId));
+
+        education.setDegree(request.getDegree());
+        education.setInstitution(request.getInstitution());
+        education.setYearOfPassing(request.getYearOfPassing());
+
+        return mapToResponse(educationRepository.save(education));
+    }
+
+    // NEW
+    public void delete(Long educationId) {
+        if (!educationRepository.existsById(educationId)) {
+            throw new ResourceNotFoundException("No education record found with id: " + educationId);
+        }
+        educationRepository.deleteById(educationId);
     }
 
     private EducationResponse mapToResponse(EducationEntity education) {

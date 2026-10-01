@@ -2,6 +2,7 @@
 package mits.miniproject.universityjobportal.Controller;
 
 import mits.miniproject.universityjobportal.dto.request.ApplicationRequest;
+import mits.miniproject.universityjobportal.dto.request.ApplicationStatusUpdateRequest;
 import mits.miniproject.universityjobportal.dto.response.ApplicationResponse;
 import mits.miniproject.universityjobportal.Service.ApplicationService;
 import org.springframework.http.HttpStatus;
@@ -34,5 +35,18 @@ public class ApplicationController {
     @GetMapping("/job/{jobId}")
     public ResponseEntity<List<ApplicationResponse>> getByJob(@PathVariable Long jobId) {
         return new ResponseEntity<>(applicationService.getByJob(jobId), HttpStatus.OK);
+    }
+    // NEW - coordinator updates status/notes only
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<ApplicationResponse> updateStatus(@PathVariable Long id,
+                                                            @RequestBody ApplicationStatusUpdateRequest request) {
+        return new ResponseEntity<>(applicationService.updateStatus(id, request), HttpStatus.OK);
+    }
+
+    // NEW - student withdraws their application
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        applicationService.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -7,7 +7,7 @@ public class EducationRequest {
     private Long studentId;
     private String degree;
     private String institution;
-    private LocalDate yearOfPassing;
+    private Integer yearOfPassing;
 
     public EducationRequest() {
     }
@@ -36,11 +36,11 @@ public class EducationRequest {
         this.institution = institution;
     }
 
-    public LocalDate getYearOfPassing() {
+    public Integer getYearOfPassing() {
         return yearOfPassing;
     }
 
-    public void setYearOfPassing(LocalDate yearOfPassing) {
+    public void setYearOfPassing(Integer yearOfPassing) {
         this.yearOfPassing = yearOfPassing;
     }
 }

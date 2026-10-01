@@ -18,7 +18,7 @@ public class EducationEntity {
 
     private String degree;
     private String institution;
-    private LocalDate yearOfPassing;
+    private Integer yearOfPassing;
 
     @Column(updatable = false)
     private LocalDateTime createdAt;
@@ -39,7 +39,7 @@ public class EducationEntity {
     public EducationEntity() {
     }
 
-    public EducationEntity(Long id, StudentEntity student, String degree, String institution, LocalDate yearOfPassing, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public EducationEntity(Long id, StudentEntity student, String degree, String institution, Integer yearOfPassing, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.student = student;
         this.degree = degree;
@@ -81,11 +81,11 @@ public class EducationEntity {
         this.institution = institution;
     }
 
-    public LocalDate getYearOfPassing() {
+    public Integer getYearOfPassing() {
         return yearOfPassing;
     }
 
-    public void setYearOfPassing(LocalDate yearOfPassing) {
+    public void setYearOfPassing(Integer yearOfPassing) {
         this.yearOfPassing = yearOfPassing;
     }
 
