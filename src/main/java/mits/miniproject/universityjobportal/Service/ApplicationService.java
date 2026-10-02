@@ -168,6 +168,7 @@ public class ApplicationService {
     private ApplicationResponse mapToResponse(ApplicationEntity application) {
         return new ApplicationResponse(
                 application.getId(),
+                application.getJob().getId(),
                 application.getStudent().getUser().getName(),
                 application.getStudent().getUsn(),
                 application.getJob().getTitle(),

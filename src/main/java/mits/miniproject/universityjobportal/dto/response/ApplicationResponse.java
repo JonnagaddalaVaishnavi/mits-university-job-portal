@@ -8,6 +8,7 @@ public class ApplicationResponse {
 
 
     private Long id;
+    private Long jobId;
     private String studentName;
     private String usn;
     private String jobTitle;
@@ -19,10 +20,11 @@ public class ApplicationResponse {
     public ApplicationResponse() {
     }
 
-    public ApplicationResponse(Long id, String studentName, String usn, String jobTitle,
+    public ApplicationResponse(Long id, Long jobId, String studentName, String usn, String jobTitle,
                                String companyName, ApplicationStatus status,
                                LocalDateTime appliedAt, String notes) {
         this.id = id;
+        this.jobId = jobId;
         this.studentName = studentName;
         this.usn = usn;
         this.jobTitle = jobTitle;
@@ -34,6 +36,14 @@ public class ApplicationResponse {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Long jobId) {
+        this.jobId = jobId;
     }
 
     public void setId(Long id) {
